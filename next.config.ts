@@ -1,7 +1,15 @@
+import { withContentlayer } from 'next-contentlayer'
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    optimizePackageImports: ['lucide-react'],
+  },
+  images: {
+    formats: ['image/webp', 'image/avif'],
+  },
+  output: 'standalone',
+  turbopack: {},
 };
 
-export default nextConfig;
+export default withContentlayer(nextConfig);

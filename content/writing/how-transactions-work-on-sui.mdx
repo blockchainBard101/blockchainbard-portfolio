@@ -1,0 +1,183 @@
+---
+title: "How Transactions Work on Sui (No BS Guide)"
+description: "A builder-first walkthrough of Sui transactions, validators, and gas mechanics. No marketing fluff, just the technical details you need."
+date: "2024-10-24"
+tags: ["Sui", "Smart Contracts", "Developers"]
+image: "/og/sui-transactions.png"
+published: true
+---
+
+# How Transactions Work on Sui (No BS Guide)
+
+When I first started building on Sui, I was confused by how transactions actually work under the hood. The documentation was scattered, and most tutorials focused on high-level concepts rather than the practical details developers need.
+
+After building several dApps and smart contracts on Sui, I've learned the ins and outs of the transaction system. This guide covers everything you need to know to build effectively on Sui.
+
+## The Basics: What Makes Sui Different
+
+Unlike traditional blockchains, Sui doesn't use a traditional block structure. Instead, it uses a **DAG (Directed Acyclic Graph)** to process transactions in parallel. This means:
+
+- Transactions that don't conflict can be processed simultaneously
+- No global ordering of transactions
+- Much higher throughput than traditional blockchains
+
+## Transaction Structure
+
+Every Sui transaction has this basic structure:
+
+```move
+public fun transfer_object(
+    object: &mut Object,
+    recipient: address,
+    ctx: &mut TxContext
+) {
+    // Transaction logic here
+}
+```
+
+The key components are:
+
+1. **Gas Budget**: Maximum gas you're willing to pay
+2. **Sender**: The address initiating the transaction
+3. **Gas Price**: How much you're willing to pay per unit of gas
+4. **Transaction Data**: The actual Move function calls
+
+## Gas and Fees
+
+Sui's gas model is different from Ethereum:
+
+- **Gas is paid in SUI tokens**
+- **Gas price is determined by the market** (similar to EIP-1559)
+- **No gas limit** - you set a gas budget instead
+- **Unused gas is refunded**
+
+Here's how to estimate gas for your transactions:
+
+```typescript
+// Estimate gas for a transaction
+const gasEstimate = await suiClient.getGasPrice();
+const gasBudget = gasEstimate * 1000; // 1000 gas units
+
+const txb = new TransactionBlock();
+txb.transferObjects([coin], recipient);
+txb.setGasBudget(gasBudget);
+```
+
+## Transaction Execution Flow
+
+1. **Transaction Submission**: You submit a transaction to a Sui node
+2. **Validation**: Validators check the transaction for validity
+3. **Execution**: The transaction is executed (if valid)
+4. **Consensus**: Validators reach consensus on the result
+5. **Finalization**: The transaction is finalized and included in the ledger
+
+## Common Transaction Patterns
+
+### Transferring Objects
+
+```move
+public fun transfer_object(
+    object: &mut Object,
+    recipient: address,
+    ctx: &mut TxContext
+) {
+    transfer::public_transfer(object, recipient);
+}
+```
+
+### Creating New Objects
+
+```move
+public fun create_new_object(
+    data: u64,
+    ctx: &mut TxContext
+): Object {
+    let object = Object {
+        id: object::new(ctx),
+        data,
+    };
+    
+    transfer::public_transfer(object, tx_context::sender(ctx));
+    object
+}
+```
+
+### Updating Objects
+
+```move
+public fun update_object(
+    object: &mut Object,
+    new_data: u64,
+    ctx: &mut TxContext
+) {
+    object.data = new_data;
+}
+```
+
+## Error Handling
+
+Sui transactions can fail for several reasons:
+
+- **Insufficient gas**: Your gas budget is too low
+- **Invalid transaction**: The transaction data is malformed
+- **Object not found**: You're trying to access a non-existent object
+- **Permission denied**: You don't have permission to perform the action
+
+Always handle these cases in your frontend:
+
+```typescript
+try {
+  const result = await suiClient.executeTransactionBlock({
+    transactionBlock: txb,
+    options: {
+      showEffects: true,
+      showObjectChanges: true,
+    },
+  });
+  
+  console.log('Transaction successful:', result);
+} catch (error) {
+  console.error('Transaction failed:', error);
+  // Handle specific error types
+}
+```
+
+## Best Practices
+
+1. **Always estimate gas** before submitting transactions
+2. **Use batch transactions** when possible to save gas
+3. **Handle errors gracefully** in your frontend
+4. **Test with small amounts** first
+5. **Monitor gas prices** during high network activity
+
+## Debugging Transactions
+
+When transactions fail, check:
+
+1. **Gas budget**: Is it sufficient?
+2. **Object ownership**: Do you own the objects you're trying to use?
+3. **Transaction data**: Is the Move code correct?
+4. **Network conditions**: Is the network congested?
+
+Use the Sui Explorer to debug failed transactions:
+
+```bash
+# Get transaction details
+sui client tx-block <transaction_digest>
+```
+
+## Conclusion
+
+Understanding Sui transactions is crucial for building effective dApps. The key is to remember that Sui's parallel execution model means you can often batch multiple operations into a single transaction, saving gas and improving user experience.
+
+The most important thing is to start building. Create simple transactions first, then gradually work your way up to more complex operations. The Sui ecosystem is still young, and there's plenty of room for innovation.
+
+## Further Reading
+
+- [Sui Documentation](https://docs.sui.io)
+- [Move Book](https://move-language.github.io/move/)
+- [Sui SDK Reference](https://sdk.mystenlabs.com)
+
+---
+
+*Have questions about Sui transactions? Reach out on [Twitter](https://x.com/blockchainbard) or [GitHub](https://github.com/blockchainbard).*
