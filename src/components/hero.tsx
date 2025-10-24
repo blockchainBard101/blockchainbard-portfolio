@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Github, Youtube, ExternalLink, Code, Zap } from "lucide-react"
 
@@ -117,36 +118,58 @@ export function Hero() {
               </motion.div>
             </div>
 
-            {/* Right decorative content */}
+            {/* Profile Picture */}
             <div className="relative">
               <motion.div
                 variants={fadeInUp}
                 className="relative mx-auto max-w-md lg:max-w-lg"
               >
-                {/* Decorative gradient circle */}
+                {/* Profile picture with decorative elements */}
                 <div className="relative">
+                  {/* Background glow */}
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent-teal/20 rounded-full blur-3xl scale-110" />
+                  
+                  {/* Profile image container */}
                   <div className="relative bg-gradient-to-br from-primary/10 to-accent-teal/10 rounded-2xl p-8 border border-border/50 backdrop-blur-sm">
-                    <div className="text-center space-y-4">
-                      <div className="w-16 h-16 mx-auto bg-gradient-to-br from-primary to-accent-teal rounded-full flex items-center justify-center">
-                        <Zap className="h-8 w-8 text-white" />
+                    <div className="text-center space-y-6">
+                      {/* Profile Picture */}
+                      <div className="relative mx-auto w-32 h-32 lg:w-40 lg:h-40">
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent-teal rounded-full p-1">
+                          <div className="w-full h-full rounded-full overflow-hidden bg-background">
+                            <Image
+                              src="/images/profile-picture.jpg"
+                              alt="A. J. George (BlockchainBard)"
+                              width={160}
+                              height={160}
+                              className="w-full h-full object-cover"
+                              priority
+                            />
+                          </div>
+                        </div>
+                        {/* Status indicator */}
+                        <div className="absolute bottom-2 right-2 w-6 h-6 bg-green-500 border-2 border-background rounded-full flex items-center justify-center">
+                          <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                        </div>
                       </div>
+                      
+                      {/* Name and title */}
                       <div className="space-y-2">
-                        <h3 className="text-lg font-semibold text-foreground">
-                          Sui Ecosystem
+                        <h3 className="text-xl font-bold text-foreground">
+                          A. J. George
                         </h3>
-                        <p className="text-sm text-muted-foreground">
-                          Building the future of blockchain with innovative tools and dApps
+                        <p className="text-sm text-muted-foreground font-medium">
+                          BlockchainBard
+                        </p>
+                        <p className="text-xs text-primary">
+                          Building on Sui • DevRel • Lead Developer
                         </p>
                       </div>
-                      <div className="flex justify-center space-x-4 text-xs text-muted-foreground">
-                        <span>Move</span>
-                        <span>•</span>
-                        <span>DeFi</span>
-                        <span>•</span>
-                        <span>NFTs</span>
-                        <span>•</span>
-                        <span>Gaming</span>
+                      
+                      {/* Tech stack indicators */}
+                      <div className="flex justify-center space-x-3 text-xs text-muted-foreground">
+                        <span className="px-2 py-1 bg-primary/10 text-primary rounded-full">Move</span>
+                        <span className="px-2 py-1 bg-accent-teal/10 text-accent-teal rounded-full">DeFi</span>
+                        <span className="px-2 py-1 bg-primary/10 text-primary rounded-full">AI</span>
                       </div>
                     </div>
                   </div>
