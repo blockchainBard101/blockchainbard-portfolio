@@ -23,9 +23,9 @@ export const socials: SocialLink[] = [
   },
   {
     name: 'YouTube',
-    url: 'https://youtube.com/@blockchainbard',
+    url: 'https://www.youtube.com/@blockchainbard_ai',
     icon: 'youtube',
-    username: '@blockchainbard',
+    username: '@blockchainbard_ai',
     description: 'Watch my tutorials and technical deep dives',
   },
   {

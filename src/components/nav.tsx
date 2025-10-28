@@ -41,7 +41,7 @@ export function Nav() {
           : "backdrop-blur-sm bg-background/60 border-b border-border/20"
       )}
     >
-      <div className="container flex h-14 items-center">
+      <div className="container px-4 sm:px-6 lg:px-8 flex h-14 items-center">
         <div className="mr-4 hidden md:flex">
           <Link 
             href="/" 

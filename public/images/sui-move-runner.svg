@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Blue teardrop/flame shape - main element -->
+  <!-- Left edge is smooth curve, right edge has pronounced inward curve -->
+  <path d="M 10 25 Q 8 35 12 50 Q 18 68 20 78 Q 22 88 25 95 Q 30 105 35 108 Q 42 112 50 110 Q 58 108 65 105 Q 72 102 78 98 Q 85 92 90 85 Q 85 75 78 70 Q 70 62 65 58 Q 60 50 58 42 Q 56 35 55 28 Q 52 20 45 18 Q 38 16 30 18 Q 20 20 10 25 Z" 
+        fill="#60A5FA" 
+        stroke="#2563EB" 
+        stroke-width="2" 
+        stroke-linejoin="round"/>
+  
+  <!-- Black gear in bottom-right corner, overlapping blue shape -->
+  <g transform="translate(80, 88)">
+    <!-- Outer circle -->
+    <circle cx="0" cy="0" r="18" fill="black"/>
+    
+    <!-- Gear teeth (8 evenly spaced) -->
+    <rect x="-1.5" y="-24" width="3" height="12" fill="black" rx="1.5"/>
+    <rect x="-1.5" y="12" width="3" height="12" fill="black" rx="1.5"/>
+    <rect x="-12" y="-1.5" width="12" height="3" fill="black" rx="1.5"/>
+    <rect x="10.5" y="-1.5" width="12" height="3" fill="black" rx="1.5"/>
+    <rect x="-18" y="-18" width="3" height="12" fill="black" rx="1.5" transform="rotate(-45)"/>
+    <rect x="15" y="-18" width="3" height="12" fill="black" rx="1.5" transform="rotate(45)"/>
+    <rect x="-18" y="18" width="3" height="12" fill="black" rx="1.5" transform="rotate(45)"/>
+    <rect x="15" y="18" width="3" height="12" fill="black" rx="1.5" transform="rotate(-45)"/>
+    
+    <!-- White circular cutout (center hole) matching background -->
+    <circle cx="0" cy="0" r="8" fill="white"/>
+  </g>
+</svg>

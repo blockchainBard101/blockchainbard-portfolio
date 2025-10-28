@@ -16,6 +16,7 @@ import { featuredProjects } from "@/data/projects"
 import { latestVideos } from "@/data/videos"
 import { writing } from "@/data/writing"
 import { currentRoles } from "@/data/timeline"
+import { NodesBackground } from "@/components/ui/nodes-background"
 
 export default function Home() {
   const latestWriting = writing.slice(0, 3)
@@ -23,6 +24,7 @@ export default function Home() {
 
   return (
     <>
+      <NodesBackground />
       <Hero />
       
       {/* Featured Projects */}

@@ -1,38 +1,45 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowRight, Github, Youtube, ExternalLink, Code, Zap } from "lucide-react"
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  ArrowRight,
+  Github,
+  Youtube,
+  ExternalLink,
+  Code,
+  Zap,
+} from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { GradientText } from "@/components/ui/gradient-text"
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { GradientText } from "@/components/ui/gradient-text";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: "easeOut" }
-}
+  transition: { duration: 0.6, ease: "easeOut" },
+};
 
 const staggerChildren = {
   animate: {
     transition: {
-      staggerChildren: 0.15
-    }
-  }
-}
+      staggerChildren: 0.15,
+    },
+  },
+};
 
 const metrics = [
   { label: "DevRel", value: "Sui on Campus", icon: "🏫" },
   { label: "Lead Dev", value: "Team Sushi", icon: "🍣" },
   { label: "Lead Dev", value: "Voultron Games", icon: "🎮" },
   { label: "Open Source", value: "Sui Network", icon: "⚡" },
-]
+];
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden py-16 sm:py-20 lg:py-28">
+    <section className="relative overflow-hidden py-16 sm:py-20 lg:py-28 [&_button]:dark:text-accent-teal [&_button_span]:dark:text-accent-teal [&_a]:dark:text-accent-teal">
       {/* Enhanced background gradient */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white to-purple-50/50 dark:from-blue-950/10 dark:via-background dark:to-purple-950/10" />
@@ -51,8 +58,8 @@ export function Hero() {
             {/* Left content */}
             <div className="text-center lg:text-left">
               <motion.div variants={fadeInUp} className="mb-6">
-                <Badge 
-                  variant="secondary" 
+                <Badge
+                  variant="secondary"
                   className="mb-4 px-4 py-2 text-sm font-medium bg-primary/10 text-primary border-primary/20 hover:bg-primary/15 transition-colors"
                 >
                   <Code className="mr-2 h-4 w-4" />
@@ -60,7 +67,7 @@ export function Hero() {
                 </Badge>
               </motion.div>
 
-              <motion.h1 
+              <motion.h1
                 variants={fadeInUp}
                 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-7xl"
               >
@@ -69,50 +76,74 @@ export function Hero() {
                   Sui
                 </GradientText>
                 .<br />
-                <span className="text-muted-foreground">Shipping tools, docs, and dApps.</span>
+                <span className="text-muted-foreground">
+                  Shipping tools, docs, and dApps.
+                </span>
               </motion.h1>
 
-              <motion.p 
+              <motion.p
                 variants={fadeInUp}
-                className="mb-8 text-lg text-muted-foreground sm:text-xl lg:text-2xl max-w-2xl mx-auto lg:mx-0"
+                className="mb-8 text-lg sm:text-xl lg:text-2xl max-w-2xl mx-auto lg:mx-0
+                          text-muted-foreground dark:text-zinc-900"
               >
                 Smart contracts, backend systems, and AI—shipped fast and clean.
               </motion.p>
 
-              <motion.div 
+              <motion.div
                 variants={fadeInUp}
                 className="mb-8 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start"
               >
-                <Button asChild size="lg" className="group h-12 px-8 text-base font-medium">
+                {/* Primary */}
+                <Button
+                  asChild
+                  size="lg"
+                  className="group h-12 px-8 text-base font-medium
+               text-zinc-900 dark:text-zinc-900"
+                >
                   <Link href="/projects">
                     Explore Projects
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-2 h-4 w-4 text-zinc-900 dark:text-zinc-900 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="group h-12 px-8 text-base font-medium">
-                  <Link href="/videos">
-                    <Youtube className="mr-2 h-4 w-4" />
+
+                {/* Outline — match light mode border + text in dark */}
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="group h-12 px-8 text-base font-medium
+                text-zinc-900 dark:text-zinc-900
+                border-zinc-200 dark:border-zinc-200"
+                >
+                  <a href="https://www.youtube.com/@blockchainbard_ai" target="_blank" rel="noopener noreferrer">
+                    <Youtube className="mr-2 h-4 w-4 text-zinc-900 dark:text-zinc-900" />
                     Watch Tutorials
-                  </Link>
+                  </a>
                 </Button>
               </motion.div>
 
               {/* Metrics chips */}
-              <motion.div 
+              <motion.div
                 variants={fadeInUp}
                 className="flex flex-wrap justify-center lg:justify-start gap-3"
               >
                 {metrics.map((metric, index) => (
-                  <Badge 
+                  <Badge
                     key={index}
-                    variant="outline" 
-                    className="px-4 py-2 text-sm font-medium hover:bg-accent/50 transition-colors group"
+                    variant="outline"
+                    className="px-4 py-2 text-sm font-medium transition-colors group
+                 border-zinc-200 dark:border-zinc-200"
                   >
-                    <span className="mr-2 group-hover:scale-110 transition-transform">
+                    <span className="mr-2 group-hover:scale-110 transition-transform text-zinc-900 dark:text-zinc-900">
                       {metric.icon}
                     </span>
-                    <span className="text-muted-foreground">{metric.label}</span>
-                    <span className="ml-1 font-medium text-foreground">{metric.value}</span>
+
+                    <span className="text-zinc-900 dark:text-zinc-900">
+                      {metric.label}
+                    </span>
+                    <span className="ml-1 font-medium text-zinc-900 dark:text-zinc-900">
+                      {metric.value}
+                    </span>
                   </Badge>
                 ))}
               </motion.div>
@@ -128,7 +159,7 @@ export function Hero() {
                 <div className="relative">
                   {/* Background glow */}
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent-teal/20 rounded-full blur-3xl scale-110" />
-                  
+
                   {/* Profile image container */}
                   <div className="relative bg-gradient-to-br from-primary/10 to-accent-teal/10 rounded-2xl p-8 border border-border/50 backdrop-blur-sm">
                     <div className="text-center space-y-6">
@@ -151,7 +182,7 @@ export function Hero() {
                           <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
                         </div>
                       </div>
-                      
+
                       {/* Name and title */}
                       <div className="space-y-2">
                         <h3 className="text-xl font-bold text-foreground">
@@ -164,12 +195,18 @@ export function Hero() {
                           Building on Sui • DevRel • Lead Developer
                         </p>
                       </div>
-                      
+
                       {/* Tech stack indicators */}
                       <div className="flex justify-center space-x-3 text-xs text-muted-foreground">
-                        <span className="px-2 py-1 bg-primary/10 text-primary rounded-full">Move</span>
-                        <span className="px-2 py-1 bg-accent-teal/10 text-accent-teal rounded-full">DeFi</span>
-                        <span className="px-2 py-1 bg-primary/10 text-primary rounded-full">AI</span>
+                        <span className="px-2 py-1 bg-primary/10 text-primary rounded-full">
+                          Move
+                        </span>
+                        <span className="px-2 py-1 bg-accent-teal/10 text-accent-teal rounded-full">
+                          DeFi
+                        </span>
+                        <span className="px-2 py-1 bg-primary/10 text-primary rounded-full">
+                          AI
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -177,27 +214,27 @@ export function Hero() {
 
                 {/* Floating elements */}
                 <motion.div
-                  animate={{ 
+                  animate={{
                     y: [0, -10, 0],
-                    rotate: [0, 2, 0]
+                    rotate: [0, 2, 0],
                   }}
-                  transition={{ 
+                  transition={{
                     duration: 4,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: "easeInOut",
                   }}
                   className="absolute -top-4 -right-4 w-8 h-8 bg-accent-teal/20 rounded-full blur-sm"
                 />
                 <motion.div
-                  animate={{ 
+                  animate={{
                     y: [0, 10, 0],
-                    rotate: [0, -2, 0]
+                    rotate: [0, -2, 0],
                   }}
-                  transition={{ 
+                  transition={{
                     duration: 3,
                     repeat: Infinity,
                     ease: "easeInOut",
-                    delay: 1
+                    delay: 1,
                   }}
                   className="absolute -bottom-4 -left-4 w-6 h-6 bg-primary/20 rounded-full blur-sm"
                 />
@@ -207,5 +244,5 @@ export function Hero() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

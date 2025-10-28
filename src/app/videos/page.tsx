@@ -43,7 +43,19 @@ export default function VideosPage() {
               </h2>
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {tutorialVideos.map((video) => (
-                  <Card key={video.title} className="group hover:shadow-lg transition-shadow">
+                  <Card key={video.title} className="group hover:shadow-lg transition-shadow overflow-hidden">
+                    {video.thumbnail && (
+                      <div className="relative w-full h-48 bg-muted">
+                        <img 
+                          src={video.thumbnail} 
+                          alt={video.title}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+                          <Play className="h-12 w-12 text-white" />
+                        </div>
+                      </div>
+                    )}
                     <CardHeader>
                       <div className="flex items-center justify-between mb-2">
                         <Badge variant="outline">{video.platform}</Badge>
@@ -106,7 +118,19 @@ export default function VideosPage() {
               </h2>
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {advancedVideos.map((video) => (
-                  <Card key={video.title} className="group hover:shadow-lg transition-shadow">
+                  <Card key={video.title} className="group hover:shadow-lg transition-shadow overflow-hidden">
+                    {video.thumbnail && (
+                      <div className="relative w-full h-48 bg-muted">
+                        <img 
+                          src={video.thumbnail} 
+                          alt={video.title}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+                          <Play className="h-12 w-12 text-white" />
+                        </div>
+                      </div>
+                    )}
                     <CardHeader>
                       <div className="flex items-center justify-between mb-2">
                         <Badge variant="outline">{video.platform}</Badge>
@@ -169,7 +193,19 @@ export default function VideosPage() {
               </h2>
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {otherVideos.map((video) => (
-                  <Card key={video.title} className="group hover:shadow-lg transition-shadow">
+                  <Card key={video.title} className="group hover:shadow-lg transition-shadow overflow-hidden">
+                    {video.thumbnail && (
+                      <div className="relative w-full h-48 bg-muted">
+                        <img 
+                          src={video.thumbnail} 
+                          alt={video.title}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+                          <Play className="h-12 w-12 text-white" />
+                        </div>
+                      </div>
+                    )}
                     <CardHeader>
                       <div className="flex items-center justify-between mb-2">
                         <Badge variant="outline">{video.platform}</Badge>
