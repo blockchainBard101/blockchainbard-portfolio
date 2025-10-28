@@ -158,43 +158,47 @@ export default function Home() {
         variant="muted"
       >
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {latestVideosList.map((video) => (
-            <Card key={video.title} className="group hover:shadow-lg transition-all duration-200 hover:-translate-y-1">
-              <CardHeader>
-                <div className="flex items-center justify-between mb-2">
-                  <Badge variant="outline" className="text-xs">
-                    {video.platform}
-                  </Badge>
-                  <span className="text-sm text-muted-foreground">
-                    {video.duration}
-                  </span>
-                </div>
-                <CardTitle className="text-lg group-hover:text-primary transition-colors">
-                  <a 
-                    href={video.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 hover:underline"
-                  >
-                    {video.title}
-                    <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </a>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="line-clamp-3 leading-relaxed">
-                  {video.description}
-                </CardDescription>
-                <div className="flex flex-wrap gap-1 mt-3">
-                  {video.tags.slice(0, 2).map((tag) => (
-                    <Badge key={tag} variant="secondary" className="text-xs">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          <div className="aspect-video">
+            <iframe
+              width="100%"
+              height="315"
+              src="https://www.youtube.com/embed/videoseries?si=hNU6ZX06HtYb2xPA&list=PLJm5g76LAUuree2ABqs8REUxEFCvfor0T"
+              title="Sui Move Smart Contract Development Series"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="w-full h-full rounded-lg"
+            />
+          </div>
+          
+          <div className="aspect-video">
+            <iframe
+              width="100%"
+              height="315"
+              src="https://www.youtube.com/embed/videoseries?si=xFxqd7lKYmykOxwp&list=PLJm5g76LAUur4YzeloQBcPbO5QMutYiNN"
+              title="Enoki Dev Series"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="w-full h-full rounded-lg"
+            />
+          </div>
+          
+          <div className="aspect-video">
+            <iframe
+              width="100%"
+              height="315"
+              src="https://www.youtube.com/embed/videoseries?si=DqTJy4EBP7yDB6gf&list=PLJm5g76LAUuoz9XqKp1r9RATIi6_ofpJY"
+              title="Walrus Dev Series"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="w-full h-full rounded-lg"
+            />
+          </div>
         </div>
         
         <div className="text-center mt-12">
