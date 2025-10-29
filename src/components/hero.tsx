@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 import {
   ArrowRight,
   Github,
@@ -38,11 +39,17 @@ const metrics = [
 ];
 
 export function Hero() {
+  const { resolvedTheme } = useTheme();
+  
+  // Use resolvedTheme which is safe for SSR, default to 'dark' if undefined
+  const textColor = (resolvedTheme ?? 'dark') === 'dark' ? '#ffffff' : '#000000';
+  const borderColor = (resolvedTheme ?? 'dark') === 'dark' ? '#ffffff' : '#000000';
+  
   return (
     <section className="relative overflow-hidden py-16 sm:py-20 lg:py-28 [&_button]:dark:text-accent-teal [&_button_span]:dark:text-accent-teal [&_a]:dark:text-accent-teal">
       {/* Enhanced background gradient */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white to-purple-50/50 dark:from-blue-950/10 dark:via-background dark:to-purple-950/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white to-purple-50/50 dark:hidden" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.15),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(0,231,212,0.08),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(0,231,212,0.12),transparent_50%)]" />
       </div>
@@ -83,8 +90,10 @@ export function Hero() {
 
               <motion.p
                 variants={fadeInUp}
-                className="mb-8 text-lg sm:text-xl lg:text-2xl max-w-2xl mx-auto lg:mx-0
-                          text-muted-foreground dark:text-zinc-900"
+                className="mb-8 text-lg sm:text-xl lg:text-2xl max-w-2xl mx-auto lg:mx-0"
+                style={{ 
+                  color: textColor
+                }}
               >
                 Smart contracts, backend systems, and AI—shipped fast and clean.
               </motion.p>
@@ -97,12 +106,12 @@ export function Hero() {
                 <Button
                   asChild
                   size="lg"
-                  className="group h-12 px-8 text-base font-medium
-               text-zinc-900 dark:text-zinc-900"
+                  className="group h-12 px-8 text-base font-medium"
+                  style={{ color: textColor }}
                 >
-                  <Link href="/projects">
+                  <Link href="/projects" style={{ color: textColor }}>
                     Explore Projects
-                    <ArrowRight className="ml-2 h-4 w-4 text-zinc-900 dark:text-zinc-900 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" style={{ color: textColor }} />
                   </Link>
                 </Button>
 
@@ -111,12 +120,11 @@ export function Hero() {
                   asChild
                   variant="outline"
                   size="lg"
-                  className="group h-12 px-8 text-base font-medium
-                text-zinc-900 dark:text-zinc-900
-                border-zinc-200 dark:border-zinc-200"
+                  className="group h-12 px-8 text-base font-medium"
+                  style={{ borderColor: borderColor, color: textColor }}
                 >
-                  <a href="https://www.youtube.com/@blockchainbard_ai" target="_blank" rel="noopener noreferrer">
-                    <Youtube className="mr-2 h-4 w-4 text-zinc-900 dark:text-zinc-900" />
+                  <a href="https://www.youtube.com/@blockchainbard_ai" target="_blank" rel="noopener noreferrer" style={{ color: textColor }}>
+                    <Youtube className="mr-2 h-4 w-4" style={{ color: textColor }} />
                     Watch Tutorials
                   </a>
                 </Button>
@@ -132,16 +140,17 @@ export function Hero() {
                     key={index}
                     variant="outline"
                     className="px-4 py-2 text-sm font-medium transition-colors group
-                 border-zinc-200 dark:border-zinc-200"
+                 border-zinc-200 dark:border-white"
+                    style={{ borderColor: borderColor }}
                   >
-                    <span className="mr-2 group-hover:scale-110 transition-transform text-zinc-900 dark:text-zinc-900">
+                    <span className="mr-2 group-hover:scale-110 transition-transform" style={{ color: textColor }}>
                       {metric.icon}
                     </span>
 
-                    <span className="text-zinc-900 dark:text-zinc-900">
+                    <span style={{ color: textColor }}>
                       {metric.label}
                     </span>
-                    <span className="ml-1 font-medium text-zinc-900 dark:text-zinc-900">
+                    <span className="ml-1 font-medium" style={{ color: textColor }}>
                       {metric.value}
                     </span>
                   </Badge>
@@ -161,7 +170,7 @@ export function Hero() {
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent-teal/20 rounded-full blur-3xl scale-110" />
 
                   {/* Profile image container */}
-                  <div className="relative bg-gradient-to-br from-primary/10 to-accent-teal/10 rounded-2xl p-8 border border-border/50 backdrop-blur-sm">
+                  <div className="relative bg-gradient-to-br from-primary/10 to-accent-teal/10 rounded-2xl p-8 border border-border/50 dark:border-white backdrop-blur-sm" style={{ borderColor: borderColor }}>
                     <div className="text-center space-y-6">
                       {/* Profile Picture */}
                       <div className="relative mx-auto w-32 h-32 lg:w-40 lg:h-40">
@@ -185,26 +194,47 @@ export function Hero() {
 
                       {/* Name and title */}
                       <div className="space-y-2">
-                        <h3 className="text-xl font-bold text-foreground">
+                        <h3 
+                          className="text-xl font-bold text-foreground dark:text-white"
+                          style={{ color: textColor }}
+                        >
                           A. J. George
                         </h3>
-                        <p className="text-sm text-muted-foreground font-medium">
+                        <p 
+                          className="text-sm text-muted-foreground dark:text-white font-medium"
+                          style={{ color: textColor }}
+                        >
                           BlockchainBard
                         </p>
-                        <p className="text-xs text-primary">
+                        <p 
+                          className="text-xs text-foreground dark:text-white"
+                          style={{ color: textColor }}
+                        >
                           Building on Sui • DevRel • Lead Developer
                         </p>
                       </div>
 
                       {/* Tech stack indicators */}
-                      <div className="flex justify-center space-x-3 text-xs text-muted-foreground">
-                        <span className="px-2 py-1 bg-primary/10 text-primary rounded-full">
+                      <div 
+                        className="flex justify-center space-x-3 text-xs text-muted-foreground dark:text-white"
+                        style={{ color: textColor }}
+                      >
+                        <span 
+                          className="px-2 py-1 bg-primary/10 text-foreground dark:text-white rounded-full"
+                          style={{ color: textColor }}
+                        >
                           Move
                         </span>
-                        <span className="px-2 py-1 bg-accent-teal/10 text-accent-teal rounded-full">
+                        <span 
+                          className="px-2 py-1 bg-accent-teal/10 text-foreground dark:text-white rounded-full"
+                          style={{ color: textColor }}
+                        >
                           DeFi
                         </span>
-                        <span className="px-2 py-1 bg-primary/10 text-primary rounded-full">
+                        <span 
+                          className="px-2 py-1 bg-primary/10 text-foreground dark:text-white rounded-full"
+                          style={{ color: textColor }}
+                        >
                           AI
                         </span>
                       </div>
