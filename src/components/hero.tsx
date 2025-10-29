@@ -120,7 +120,7 @@ export function Hero() {
                   asChild
                   variant="outline"
                   size="lg"
-                  className="group h-12 px-8 text-base font-medium"
+                  className="group h-12 px-8 text-base font-medium border-0 sm:border"
                   style={{ borderColor: borderColor, color: textColor }}
                 >
                   <a href="https://www.youtube.com/@blockchainbard_ai" target="_blank" rel="noopener noreferrer" style={{ color: textColor }}>
