@@ -126,6 +126,20 @@ export function Hero() {
                     Watch Tutorials
                   </a>
                 </Button>
+
+                {/* Resume button - visible on mobile */}
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="group h-12 px-8 text-base font-medium border-0 sm:border sm:hidden"
+                  style={{ borderColor: borderColor, color: textColor }}
+                >
+                  <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" style={{ color: textColor }}>
+                    <ExternalLink className="mr-2 h-4 w-4" style={{ color: textColor }} />
+                    View Resume
+                  </Link>
+                </Button>
               </motion.div>
 
               {/* Metrics chips */}
