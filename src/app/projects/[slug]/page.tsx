@@ -13,9 +13,9 @@ import { Section, Container } from "@/components/section"
 import { projects } from "@/data/projects"
 
 interface ProjectPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -25,7 +25,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
-  const project = projects.find((p) => p.slug === params.slug)
+  const { slug } = await params
+  const project = projects.find((p) => p.slug === slug)
   
   if (!project) {
     return {
@@ -44,8 +45,9 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   }
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = projects.find((p) => p.slug === params.slug)
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { slug } = await params
+  const project = projects.find((p) => p.slug === slug)
   
   if (!project) {
     notFound()
@@ -109,7 +111,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                     <Button asChild variant="outline">
                       <Link href={project.links.demo} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="mr-2 h-4 w-4" />
-                        Live Demo
+                        {project.links.demo.includes('marketplace.visualstudio.com') ? 'View Extension' : 
+                         project.links.demo.includes('youtube.com') || project.links.demo.includes('youtu.be') ? 'Watch Video' : 
+                         'View Project'}
                       </Link>
                     </Button>
                   )}

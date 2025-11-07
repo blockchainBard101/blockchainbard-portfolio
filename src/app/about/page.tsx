@@ -15,7 +15,7 @@ import { socials } from "@/data/socials"
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Learn more about A. J. George (BlockchainBard), a developer building on Sui with expertise in smart contracts, AI, and backend systems.",
+  description: "Learn more about A. J. George (BlockchainBard), a developer with expertise in smart contracts, AI, and backend systems.",
 }
 
 export default function AboutPage() {
@@ -35,23 +35,22 @@ export default function AboutPage() {
               </h1>
               <p className="text-xl text-muted-foreground mb-6">
                 Also known as <strong>BlockchainBard</strong> — a developer passionate about 
-                building the future of blockchain technology on Sui.
+                building the future of technology through blockchain, AI, and backend systems.
               </p>
               <p className="text-lg text-muted-foreground mb-8">
                 I specialize in smart contracts, backend systems, and AI development. 
-                Currently serving as DevRel for Sui on Campus and Lead Developer at 
-                Team Sushi & Voultron Games.
+                Currently serving as DevRel for Sui on Campus, helping onboard developers to blockchain technology.
               </p>
               
               <div className="flex flex-wrap gap-2 mb-8">
-                <Badge variant="default">Sui Developer</Badge>
+                <Badge variant="default">Blockchain Developer</Badge>
                 <Badge variant="outline">DevRel</Badge>
                 <Badge variant="outline">AI Engineer</Badge>
                 <Badge variant="outline">Open Source</Badge>
               </div>
 
-              <div className="flex gap-4">
-                {socials.slice(0, 4).map((social) => (
+              <div className="flex flex-wrap gap-4">
+                {socials.filter(social => ['X (Twitter)', 'GitHub', 'YouTube', 'LinkedIn', 'Medium'].includes(social.name)).map((social) => (
                   <Button asChild key={social.name} variant="outline" size="sm">
                     <Link href={social.url} target="_blank" rel="noopener noreferrer">
                       {social.name}
@@ -59,6 +58,12 @@ export default function AboutPage() {
                     </Link>
                   </Button>
                 ))}
+                <Button asChild variant="default" size="sm">
+                  <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                    Download Resume
+                    <ExternalLink className="ml-2 h-3 w-3" />
+                  </Link>
+                </Button>
               </div>
             </div>
 
@@ -90,15 +95,16 @@ export default function AboutPage() {
             <div className="space-y-4 text-lg text-muted-foreground">
               <p>
                 I'm a Mechatronics Engineering graduate from FUT Minna with a passion for 
-                technology and innovation. My journey into blockchain development started 
-                with curiosity about smart contracts and has evolved into a deep expertise 
-                in the Sui ecosystem.
+                technology and innovation. My journey began with a deep fascination for AI 
+                and machine learning, which led me to explore computer vision, robotics, and 
+                automation. This passion for AI/ML has been a driving force throughout my career, 
+                from research projects to freelance work developing intelligent systems.
               </p>
               <p>
-                As DevRel for Sui on Campus, I help onboard new developers to the ecosystem 
-                through educational content, workshops, and starter repositories. At Team Sushi 
-                and Voultron Games, I lead development of protocol infrastructure and on-chain 
-                gaming experiences.
+                My curiosity about smart contracts eventually drew me into blockchain development, 
+                where I've built expertise across multiple ecosystems and protocols. As DevRel for 
+                Sui on Campus, I help onboard new developers to blockchain technology through educational 
+                content, workshops, and starter repositories.
               </p>
               <p>
                 I believe in the power of open source and community-driven development. 
@@ -151,7 +157,7 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm">
-                  <li>• Sui smart contract development</li>
+                  <li>• Smart contract development</li>
                   <li>• Developer tooling and SDKs</li>
                   <li>• On-chain gaming infrastructure</li>
                   <li>• Educational content creation</li>

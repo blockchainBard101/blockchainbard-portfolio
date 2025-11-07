@@ -44,7 +44,7 @@ export default function ContactPage() {
                   <Mail className="h-5 w-5 text-primary" />
                   <div>
                     <p className="font-medium">Email</p>
-                    <p className="text-sm text-muted-foreground">hello@blockchainbard.dev</p>
+                    <p className="text-sm text-muted-foreground">bchainbard.annonymousasquare@gmail.com</p>
                   </div>
                 </div>
                 

@@ -30,7 +30,7 @@ export default function Home() {
       {/* Featured Projects */}
       <Section
         title="Featured Projects"
-        description="Some of my recent work building on Sui and beyond"
+        description="Some of my recent work across blockchain, AI, and backend systems"
         eyebrow="Portfolio"
       >
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -97,7 +97,7 @@ export default function Home() {
       {/* Latest Writing */}
       <Section
         title="Latest Writing"
-        description="Thoughts on Sui, DeFi, and blockchain development"
+        description="Thoughts on blockchain, DeFi, and technology development"
         eyebrow="Blog"
       >
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -153,7 +153,7 @@ export default function Home() {
       {/* Latest Videos */}
       <Section
         title="Latest Videos"
-        description="Tutorials and deep dives on Sui development"
+        description="Tutorials and deep dives on blockchain and smart contract development"
         eyebrow="Tutorials"
         variant="muted"
       >
@@ -214,7 +214,7 @@ export default function Home() {
       {/* Contact CTA */}
       <Section
         title="Let's Work Together"
-        description="Need a Sui smart contract/dev tools engineer? Let's talk."
+        description="Need a blockchain developer, AI engineer, or backend specialist? Let's talk."
         eyebrow="Contact"
       >
         <div className="mx-auto max-w-2xl">

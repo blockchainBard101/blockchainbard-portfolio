@@ -79,12 +79,25 @@ cd bard-portfolio
 npm install
 ```
 
-3. Start the development server:
+3. Set up environment variables:
+```bash
+# Create a .env.local file in the root directory
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+CONTACT_EMAIL=bchainbard.annonymousasquare@gmail.com
+```
+
+   **Note**: To receive contact form submissions via email:
+   - Sign up for a free account at [Resend](https://resend.com)
+   - Get your API key from the [Resend dashboard](https://resend.com/api-keys)
+   - Add it to your `.env.local` file
+   - For production, you'll need to verify your domain with Resend to use a custom "from" address
+
+4. Start the development server:
 ```bash
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Build for Production
 
@@ -207,7 +220,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📞 Contact
 
-- **Email**: hello@blockchainbard.dev
+- **Email**: bchainbard.annonymousasquare@gmail.com
 - **Twitter**: [@blockchainbard](https://x.com/blockchainbard)
 - **GitHub**: [blockchainbard](https://github.com/blockchainbard)
 

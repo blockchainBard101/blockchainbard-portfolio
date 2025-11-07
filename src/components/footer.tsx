@@ -22,8 +22,8 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">BlockchainBard</h3>
             <p className="text-sm text-muted-foreground">
-              AI, Backend & Smart Contract Developer building on Sui. 
-              DevRel for Sui on Campus, Lead dev at Team Sushi & Voultron Games.
+              AI, Backend & Smart Contract Developer. 
+              Building solutions across blockchain, AI, and backend systems.
             </p>
           </div>
           
@@ -89,7 +89,7 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold">Connect</h4>
             <div className="flex space-x-4">
-              {socials.slice(0, 4).map((social) => {
+              {socials.filter(social => ['X (Twitter)', 'GitHub', 'YouTube', 'LinkedIn', 'Medium'].includes(social.name)).map((social) => {
                 const Icon = iconMap[social.icon as keyof typeof iconMap]
                 return (
                   <a
@@ -114,7 +114,7 @@ export function Footer() {
               © {currentYear} A. J. George (BlockchainBard). All rights reserved.
             </p>
             <p className="text-sm text-muted-foreground">
-              Built with Next.js on Sui energy ⚡️
+              Built with Next.js ⚡️
             </p>
           </div>
         </div>

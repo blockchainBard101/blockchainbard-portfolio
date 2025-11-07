@@ -9,16 +9,16 @@ export interface SocialLink {
 export const socials: SocialLink[] = [
   {
     name: 'X (Twitter)',
-    url: 'https://x.com/blockchainbard',
+    url: 'https://x.com/web3Bard101',
     icon: 'twitter',
-    username: '@blockchainbard',
+    username: '@web3Bard101',
     description: 'Follow me for blockchain insights and development updates',
   },
   {
     name: 'GitHub',
-    url: 'https://github.com/blockchainbard',
+    url: 'https://github.com/blockchainBard101',
     icon: 'github',
-    username: 'blockchainbard',
+    username: 'blockchainBard101',
     description: 'Check out my open source projects and contributions',
   },
   {
@@ -37,16 +37,16 @@ export const socials: SocialLink[] = [
   },
   {
     name: 'LinkedIn',
-    url: 'https://linkedin.com/in/aj-george-blockchain',
+    url: 'https://www.linkedin.com/in/george-junior-alainengiya-5b44b5251',
     icon: 'linkedin',
-    username: 'aj-george-blockchain',
+    username: 'george-junior-alainengiya',
     description: 'Connect with me professionally',
   },
   {
     name: 'Email',
-    url: 'mailto:hello@blockchainbard.dev',
+    url: 'mailto:bchainbard.annonymousasquare@gmail.com',
     icon: 'mail',
-    username: 'hello@blockchainbard.dev',
+    username: 'bchainbard.annonymousasquare@gmail.com',
     description: 'Get in touch for collaborations or opportunities',
   },
 ]

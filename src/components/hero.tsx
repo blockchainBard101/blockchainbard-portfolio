@@ -33,9 +33,7 @@ const staggerChildren = {
 
 const metrics = [
   { label: "DevRel", value: "Sui on Campus", icon: "🏫" },
-  { label: "Lead Dev", value: "Team Sushi", icon: "🍣" },
-  { label: "Lead Dev", value: "Voultron Games", icon: "🎮" },
-  { label: "Open Source", value: "Sui Network", icon: "⚡" },
+  { label: "Open Source", value: "Contributor", icon: "⚡" },
 ];
 
 export function Hero() {
@@ -78,9 +76,9 @@ export function Hero() {
                 variants={fadeInUp}
                 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-7xl"
               >
-                Building on{" "}
+                Building{" "}
                 <GradientText variant="primary" className="font-bold">
-                  Sui
+                  Solutions
                 </GradientText>
                 .<br />
                 <span className="text-muted-foreground">
@@ -210,7 +208,7 @@ export function Hero() {
                           className="text-xs text-foreground dark:text-white"
                           style={{ color: textColor }}
                         >
-                          Building on Sui • DevRel • Lead Developer
+                          Blockchain Developer • DevRel
                         </p>
                       </div>
 

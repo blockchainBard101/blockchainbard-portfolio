@@ -138,16 +138,30 @@ export function ContactForm({ className }: ContactFormProps) {
     }
 
     try {
-      // For now, just log the data. In production, you'd send this to your API
-      console.log('Contact form submission:', { name, email, message })
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, message }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        console.error('API Error:', data)
+        throw new Error(data.error || data.details || 'Failed to send message')
+      }
+
       setIsSubmitted(true)
+      setFormData({ name: '', email: '', message: '', website: '' })
     } catch (error) {
       console.error('Error submitting form:', error)
-      setErrors({ submit: 'Failed to send message. Please try again.' })
+      setErrors({ 
+        submit: error instanceof Error 
+          ? error.message 
+          : 'Failed to send message. Please try again.' 
+      })
     } finally {
       setIsSubmitting(false)
     }
@@ -206,7 +220,7 @@ export function ContactForm({ className }: ContactFormProps) {
         <CardHeader className="text-center pb-6">
           <CardTitle className="text-2xl">Get In Touch</CardTitle>
           <CardDescription className="text-base">
-            Need a Sui smart contract/dev tools engineer? Let's talk.
+            Need a blockchain developer, AI engineer, or backend specialist? Let's talk.
           </CardDescription>
         </CardHeader>
         <CardContent>

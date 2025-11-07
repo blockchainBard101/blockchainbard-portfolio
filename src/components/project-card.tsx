@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
-import { ExternalLink, Github, ArrowRight, CheckCircle } from "lucide-react"
+import { ExternalLink, Github, ArrowRight, CheckCircle, Youtube } from "lucide-react"
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -19,6 +19,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, featured = false }: ProjectCardProps) {
   const hasSuiTag = project.tags.some(tag => tag.toLowerCase().includes('sui'))
+  const isYouTubeLink = project.links.demo?.includes('youtube.com') || project.links.demo?.includes('youtu.be')
   
   return (
     <motion.div
@@ -137,7 +138,28 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
                   href={project.links.demo} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  aria-label="View live demo"
+                  aria-label={isYouTubeLink ? "Watch demo video" : "View live demo"}
+                >
+                  {isYouTubeLink ? (
+                    <Youtube className="h-4 w-4" />
+                  ) : (
+                    <ExternalLink className="h-4 w-4" />
+                  )}
+                </Link>
+              </Button>
+            )}
+            {project.links.docs && (
+              <Button 
+                asChild 
+                variant="ghost" 
+                size="sm"
+                className="h-8 w-8 p-0 hover:bg-accent/50 transition-colors"
+              >
+                <Link 
+                  href={project.links.docs} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="View documentation"
                 >
                   <ExternalLink className="h-4 w-4" />
                 </Link>
